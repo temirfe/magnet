@@ -1,0 +1,2 @@
+$('.js_dev').hover(function(){$('.js_dot1').addClass('dot3');},function(){$('.js_dot1').removeClass('dot3');});
+$('.js_prod').hover(function(){$('.js_dot2').addClass('dot3');},function(){$('.js_dot2').removeClass('dot3');});
