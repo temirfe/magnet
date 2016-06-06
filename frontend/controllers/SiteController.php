@@ -72,10 +72,7 @@ class SiteController extends Controller
      */
     public function actionIndex()
     {
-<<<<<<< HEAD
-=======
         $this->layout='enter.php';
->>>>>>> e618c68290304e27325a5392d1a7f4aae72ef994
         return $this->render('index');
     }
 
