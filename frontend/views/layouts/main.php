@@ -22,6 +22,14 @@ AppAsset::register($this);
     <title><?= Html::encode($this->title) ?></title>
     <?php $this->head() ?>
     <link href='https://fonts.googleapis.com/css?family=Roboto+Condensed:400,300&subset=latin,cyrillic' rel='stylesheet' type='text/css'>
+    <?php
+    $bg='about.jpg';
+    ?>
+    <style>
+        body{
+            background: url('/css/images/<?=$bg?>') no-repeat center center fixed;
+        }
+    </style>
 </head>
 <body>
 <?php $this->beginBody() ?>
@@ -37,13 +45,15 @@ AppAsset::register($this);
         ],
         'renderInnerContainer'=>false
     ]);
+    $controller=Yii::$app->controller->id;
+
     $menuItems = [
         ['label' => 'О нас', 'url' => ['/site/production']],
-        ['label' => 'Дизайн', 'url' => ['/design']],
-        ['label' => 'Видео', 'url' => ['/video']],
-        ['label' => 'Фото', 'url' => ['/photo']],
-        ['label' => 'Web/App', 'url' => ['/web']],
-        ['label' => 'Аренда студии', 'url' => ['/rent']],
+        ['label' => 'Дизайн', 'url' => ['/design'], 'active'=>$controller=='design' ? true : false],
+        ['label' => 'Видео', 'url' => ['/video'], 'active'=>$controller=='video' ? true : false],
+        ['label' => 'Фото', 'url' => ['/photo'], 'active'=>$controller=='photo' ? true : false],
+        ['label' => 'Web/App', 'url' => ['/web'], 'active'=>$controller=='web' ? true : false],
+        ['label' => 'Аренда студии', 'url' => ['/site/rent']],
         ['label' => 'Контакты', 'url' => ['/site/contact']],
     ];
     echo Nav::widget([
@@ -63,6 +73,7 @@ AppAsset::register($this);
     <div class="blue_bg js_blue_bg"></div>
 </div>
 
+<?php include_once(Yii::getAlias('@frontend').'/views/layouts/_swipe.php'); ?>
 <?php $this->endBody() ?>
 </body>
 </html>

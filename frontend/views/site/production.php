@@ -6,16 +6,6 @@ use yii\helpers\Html;
 
 $this->title = 'Magnet Production';
 ?>
-<style>
-    body{
-        overflow-x: hidden;
-        background: url(/css/images/about.jpg) no-repeat center center fixed;
-        -webkit-background-size: cover;
-        -moz-background-size: cover;
-        -o-background-size: cover;
-        background-size: cover;
-    }
-</style>
 <div class="site-about mtop text-center roboto text-uppercase font18 lh30 white">
 
     Food Processor Marta MT-1549 {мощность 700Вт, 4 аксессуара: измельчитель с чашей 500 мл, насадка для измельчения/смешивания, венчик для взбивания, мерный стакан, 8 скоростных режимов, турборежим, подсветка кнопок, цвет белый)Food Processor Marta MT-1549 {мощность 700Вт, 4 аксессуара: измельчитель с чашей 500 мл, насадка для измельчения/смешивания, венчик для взбивания, мерный стакан, 8 скоростных режимов, турборежим, подсветка кнопок, цвет белый)
