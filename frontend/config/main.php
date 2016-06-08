@@ -39,6 +39,7 @@ return [
             'rules' => [
                 'contact'=>'site/contact',
                 'index.php'=>'site/index',
+                'production'=>'site/production',
                 '<controller:\w+>/<id:\d+>' => '<controller>/view',
                 '<controller:\w+>/<action:\w+>/<id:\d+>' => '<controller>/<action>',
                 '<controller:\w+>/<action:\w+>' => '<controller>/<action>',
