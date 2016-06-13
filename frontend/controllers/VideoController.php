@@ -29,6 +29,20 @@ class VideoController extends Controller
         ];
     }
 
+    public function actionImgDelete($id)
+    {
+        $key=Yii::$app->request->post('key');
+        $webroot=Yii::getAlias('@webroot');
+        if(is_dir($dir=$webroot.'/images/video/'.$id))
+        {
+            if(is_file($dir.'/'.$key)){
+                @unlink($dir.'/'.$key);
+                Yii::$app->db->createCommand()->update('design', ['main_img' => ''], ['id'=>$id, 'main_img'=>$key])->execute();
+            }
+        }
+        Yii::$app->response->format=\yii\web\Response::FORMAT_JSON;
+        return true;
+    }
     /**
      * Lists all Video models.
      * @return mixed
@@ -101,6 +115,15 @@ class VideoController extends Controller
      */
     public function actionDelete($id)
     {
+        $webroot=Yii::getAlias('@webroot');
+        if(is_dir($dir=$webroot.'/images/video/'.$id)){
+            $scaned_images = scandir($dir, 1);
+            foreach($scaned_images as $file )
+            {
+                if(is_file($dir.'/'.$file)) @unlink($dir.'/'.$file);
+            }
+            @rmdir($dir);
+        }
         $this->findModel($id)->delete();
 
         return $this->redirect(['index']);

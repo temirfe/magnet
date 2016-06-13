@@ -153,12 +153,18 @@ a.desc:after {
 .mt6{margin-top: 6px;}
 .mt0{margin-top: 0;}
 .mb0{margin-bottom: 0;}
+.mr0{margin-right: 0;}
+.ml0{margin-left: 0;}
 .mb20{margin-bottom: 20px;}
 .mb60{margin-bottom: 60px;}
+.pl0{padding-left:0;}
+.pr0{padding-right:0;}
 .roboto{font-family: "Roboto Condensed",sans-serif;}
 .font18{font-size:18px;}
 .lh30{line-height:30px;}
 .white{color:white;}
+.rel{position: relative;}
+.abs{position: absolute;}
 .brand_blue{color:#22303C;}
 .blue_bg{background-color: #22303c;
     height: 100%;
@@ -211,3 +217,12 @@ a.desc:after {
 .design-index{}
 .design-index a{}
 .design-index a img{}
+.title_hidden{bottom: -20px;font-size: 18px;left: 15px; color:#fff; z-index:10; opacity:0; transition: all 0.3s ease 0s;}
+.title_bg{ background-color: #22303c;opacity:0;
+    height: 100%;
+    left: 0;
+    top: 0;
+    width: 100%;
+    z-index: 5;
+    transition: all 0.3s ease 0s;}
+.hdn{display:none;}

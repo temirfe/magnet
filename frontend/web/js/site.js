@@ -41,3 +41,12 @@ var openPhotoSwipe = function(ind)
     var gallery = new PhotoSwipe( pswpElement, PhotoSwipeUI_Default, items, options);
     gallery.init();
 };
+$('.js_des_list_img').hover(function(){
+        $(this).find('.js_title_bg').css('opacity','0.7');
+        $(this).find('.js_title_hidden').css({ "bottom": "20px", "opacity": "1" });
+    },
+    function(){
+        $(this).find('.js_title_bg').css('opacity','0');
+        $(this).find('.js_title_hidden').css({ "bottom": "-20px", "opacity": "0" });
+    }
+);

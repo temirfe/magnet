@@ -83,18 +83,6 @@ class Design extends \yii\db\ActiveRecord
         }
 
         if($this->imageFile){
-            //delete previous main img
-            if(is_dir($tosave)){
-                $scaned_images = scandir($tosave, 1);
-                foreach($scaned_images as $file )
-                {
-                    if(is_file($tosave.'/'.$file)){
-                        $exp=explode('.',$file);
-                        if($exp[0]==$this->id || $exp[0]==$this->id.'_full')
-                            @unlink($tosave.'/'.$file);
-                    }
-                }
-            }
             $time=time();
             $extension=$this->imageFile->extension;
             $imageName=$time.'.'.$extension;
@@ -102,7 +90,8 @@ class Design extends \yii\db\ActiveRecord
 
             $imagine=Image::getImagine()->open($tosave.'/'.$imageName);
             $imagine->thumbnail(new Box(1500, 1000))->save($tosave.'/'.$imageName);
-            $imagine->thumbnail(new Box(400, 250))->save($tosave.'/s_'.$imageName);
+            //$imagine->thumbnail(new Box(400, 250))->save($tosave.'/s_'.$imageName);
+            Image::thumbnail($tosave.'/'.$imageName,345, 220)->save($tosave.'/s_'.$imageName);
 
             Yii::$app->db->createCommand("UPDATE design SET main_img='{$imageName}' WHERE id='{$this->id}'")->execute();
         }
@@ -116,7 +105,8 @@ class Design extends \yii\db\ActiveRecord
                 $image->saveAs($tosave.'/' . $imageName);
                 $imagine=Image::getImagine()->open($tosave.'/'.$imageName);
                 $imagine->thumbnail(new Box(1500, 1000))->save($tosave.'/' .$imageName);
-                $imagine->thumbnail(new Box(400, 250))->save($tosave.'/s_'.$imageName);
+                //$imagine->thumbnail(new Box(400, 250))->save($tosave.'/s_'.$imageName);
+                Image::thumbnail($tosave.'/'.$imageName,345, 220)->save($tosave.'/s_'.$imageName);
             }
         }
     }

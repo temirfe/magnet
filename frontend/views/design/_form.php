@@ -21,8 +21,15 @@ use kartik\file\FileInput;
     <?= $form->field($model, 'description')->textInput(['maxlength' => true]) ?>
 
     <?php
-    if(!$model->isNewRecord && $main_img=$model->main_img) $iniImg=[Html::img("@web/images/design/".$model->id."/s_".$main_img, ['class'=>'file-preview-image', 'alt'=>''])];
-    else $iniImg=false;
+    $initialPreviewConfig =[];
+    if(!$model->isNewRecord && $main_img=$model->main_img) {
+        $iniImg=[Html::img("@web/images/design/".$model->id."/s_".$main_img, ['class'=>'file-preview-image', 'alt'=>''])];
+        $url=Url::to(['design/img-delete', 'id' => $model->id]);
+        $initialPreviewConfig[] = ['width' => '80px', 'url' => $url, 'key' => "s_".$main_img];
+    }
+    else {
+        $iniImg=false;
+    }
     echo $form->field($model, 'imageFile')->widget(FileInput::classname(), [
         'options' => ['accept' => 'image/*'],
         'language' => 'ru',
@@ -31,6 +38,9 @@ use kartik\file\FileInput;
             'showRemove' => false,
             'showUpload' => false,
             'initialPreview'=>$iniImg,
+            'previewFileType' => 'any',
+            'uploadUrl' => Url::to(['/design/img-upload','id'=>$model->id]),
+            'initialPreviewConfig' => $initialPreviewConfig,
         ],
     ]); ?>
 

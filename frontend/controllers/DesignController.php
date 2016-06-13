@@ -40,6 +40,7 @@ class DesignController extends Controller
                 $full=$expl[1];
                 @unlink($dir.'/'.$key);
                 @unlink($dir.'/'.$full);
+                Yii::$app->db->createCommand()->update('design', ['main_img' => ''], ['id'=>$id, 'main_img'=>$full])->execute();
             }
         }
         Yii::$app->response->format=\yii\web\Response::FORMAT_JSON;
