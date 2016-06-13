@@ -36,34 +36,36 @@ AppAsset::register($this);
 
 <div class="wrap">
     <div class='red_bg'></div>
-    <?php
-    NavBar::begin([
-        'brandLabel' => "<img src='/images/logo.png' class='logo' /><img src='/images/mlogo.png' class='mlogo' />",
-        'brandUrl' => Yii::$app->homeUrl,
-        'options' => [
-            'class' => 'navbar navbar-default navbar-fixed-top',
-        ],
-        'renderInnerContainer'=>false
-    ]);
-    $controller=Yii::$app->controller->id;
+    <div class="menu_container">
+        <?php
+        NavBar::begin([
+            'brandLabel' => "<img src='/images/logo.png' class='logo' /><img src='/images/mlogo.png' class='mlogo' />",
+            'brandUrl' => Yii::$app->homeUrl,
+            'options' => [
+                'class' => 'navbar navbar-default',
+            ],
+            'renderInnerContainer'=>false
+        ]);
+        $controller=Yii::$app->controller->id;
+        $action=Yii::$app->controller->action->id;
 
-    $menuItems = [
-        ['label' => 'О нас', 'url' => ['/site/production']],
-        ['label' => 'Дизайн', 'url' => ['/design'], 'active'=>$controller=='design' ? true : false],
-        ['label' => 'Видео', 'url' => ['/video'], 'active'=>$controller=='video' ? true : false],
-        ['label' => 'Фото', 'url' => ['/photo'], 'active'=>$controller=='photo' ? true : false],
-        ['label' => 'Web/App', 'url' => ['/web'], 'active'=>$controller=='web' ? true : false],
-        ['label' => 'Аренда студии', 'url' => ['/site/rent']],
-        ['label' => 'Контакты', 'url' => ['/site/contact']],
-    ];
-    echo Nav::widget([
-        'options' => ['class' => 'nav-pills nav-stacked'],
-        'items' => $menuItems,
-    ]);
-    NavBar::end();
-    ?>
-
-    <div class="container">
+        $menuItems = [
+            ['label' => 'О нас', 'url' => ['/site/production']],
+            ['label' => 'Дизайн', 'url' => ['/design'], 'active'=>$controller=='design' ? true : false],
+            ['label' => 'Видео', 'url' => ['/video'], 'active'=>$controller=='video' ? true : false],
+            ['label' => 'Фото', 'url' => ['/photo'], 'active'=>$controller=='photo' ? true : false],
+            ['label' => 'Web/App', 'url' => ['/web'], 'active'=>$controller=='web' ? true : false],
+            ['label' => 'Аренда студии', 'url' => ['/site/rent']],
+            ['label' => 'Контакты', 'url' => ['/site/contact']],
+        ];
+        echo Nav::widget([
+            'options' => ['class' => 'nav-pills nav-stacked'],
+            'items' => $menuItems,
+        ]);
+        NavBar::end();
+        ?>
+    </div>
+    <div class="inner_container">
         <?= Breadcrumbs::widget([
             'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
         ]) ?>
@@ -73,7 +75,10 @@ AppAsset::register($this);
     <div class="blue_bg js_blue_bg"></div>
 </div>
 
-<?php include_once(Yii::getAlias('@frontend').'/views/layouts/_swipe.php'); ?>
+<?php
+if($controller=='design' && $action=='view')
+    include_once(Yii::getAlias('@frontend').'/views/layouts/_swipe.php');
+?>
 <?php $this->endBody() ?>
 </body>
 </html>

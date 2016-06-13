@@ -217,4 +217,10 @@ class SiteController extends Controller
             'model' => $model,
         ]);
     }
+
+    public function actionRun(){
+        $embed='<iframe width="640" height="360" src="https://www.youtube.com/embed/FMlcn-_jpWY?rel=0&amp;showinfo=0" frameborder="0" allowfullscreen></iframe>';
+        preg_match("/youtube.com\/embed\/([^?]+)/",$embed,$match);
+        if(!empty($match[1])) {}
+    }
 }

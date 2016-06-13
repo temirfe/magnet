@@ -12,6 +12,7 @@ use Imagine\Image\Box;
  *
  * @property integer $id
  * @property string $main_img
+ * @property string $thumb_url
  * @property string $embed
  * @property string $text
  * @property string $title
@@ -37,6 +38,7 @@ class Video extends \yii\db\ActiveRecord
             [['embed', 'title'], 'required'],
             [['text'], 'string'],
             [['main_img'], 'string', 'max' => 20],
+            [['thumb_url'], 'string', 'max' => 100],
             [['embed'], 'string', 'max' => 1000],
             [['title'], 'string', 'max' => 255],
             [['description'], 'string', 'max' => 500],
@@ -69,6 +71,13 @@ class Video extends \yii\db\ActiveRecord
     }
 
     protected function saveImage(){
+        //save youtube thumbnail url
+        preg_match("/youtube.com\/embed\/([^?]+)/",$this->embed,$match);
+        if(!empty($match[1])) {
+            $url='http://img.youtube.com/vi/'.$match[1].'/maxresdefault.jpg';
+            Yii::$app->db->createCommand("UPDATE video SET thumb_url='{$url}' WHERE id='{$this->id}'")->execute();
+        }
+
         $this->imageFile = UploadedFile::getInstance($this, 'imageFile');
 
         if (Yii::$app->request->serverName=='magnet.loc') {

@@ -151,10 +151,13 @@ a.desc:after {
 .mtop{margin-top:153px;}
 .mtop2{margin-top:68px;}
 .mt6{margin-top: 6px;}
+.mt20{margin-top: 20px;}
+.mt15{margin-top: 15px;}
 .mt0{margin-top: 0;}
 .mb0{margin-bottom: 0;}
 .mr0{margin-right: 0;}
 .ml0{margin-left: 0;}
+.mb10{margin-bottom: 10px;}
 .mb20{margin-bottom: 20px;}
 .mb60{margin-bottom: 60px;}
 .pl0{padding-left:0;}
@@ -180,6 +183,10 @@ a.desc:after {
     position: fixed;
     width: 185px;
     z-index: 1;}
+
+.navbar-default .navbar-collapse, .navbar-default .navbar-form {
+    position: fixed;
+}
 @media (min-width: 768px) {
     .container {
         padding-left: 125px;
@@ -203,12 +210,17 @@ a.desc:after {
         border-top: 1px solid transparent;
         padding-top: 15px;
     }
-    .mtop {margin-top: 110px;}
+    .mtop {margin-top: 0;}
+    .menu_container { width: 100%; }
+    .navbar-default .navbar-collapse, .navbar-default .navbar-form {position:relative;}
 }
+
 @media (max-width: 475px) {
-    .blue_bg{visibility: hidden;}
     .container {background-color: #22303c; opacity: 0.85; padding-bottom: 60px;}
+    body {text-transform: none;}
 }
+
+
 .product-spec-hint, .file-drop-zone-title, .file-footer-caption, .kv-file-upload{display:none;}
 .file-actions {margin-top: -22px;}
 .file-preview-image {height: 90px;}
@@ -226,3 +238,37 @@ a.desc:after {
     z-index: 5;
     transition: all 0.3s ease 0s;}
 .hdn{display:none;}
+
+.video_col{margin-right: 10px; overflow:hidden; position:relative;}
+.video_col img{height: 360px; width: 640px;}
+
+.vh{visibility: hidden;}
+
+.menu_container{float:left; position: relative; z-index: 2}
+.inner_container{    float: left;
+    margin-left: 30px;
+    width: 80%;position: relative; z-index: 2; padding-right:30px;
+}
+@media (max-width: 1080px) {
+    .inner_container{ width: 70%;}
+}
+@media (max-width: 768px) {
+    .inner_container{ width: 100%;padding-right:55px;}
+}
+.video-view{overflow: hidden;}
+.cols_wrap{width:1600px;}
+.cols_wrap .video_col:nth-child(1){width: 238px; height:445px;}
+.cols_wrap .video_col:nth-child(1) img{position:absolute; right:0; z-index: 1;}
+.cols_wrap .video_col:nth-child(3){ margin-right: 0;}
+.cols_wrap .video_col:nth-child(1) .col_cover, .cols_wrap .video_col:nth-child(3) .col_cover{
+    background-color: #22303c;
+    height: 100%;
+    opacity: 0.7;
+    position: absolute;
+    width: 100%;
+    z-index: 2;
+}
+.col_cover{transition: all 0.3s ease 0s;}
+.cols_wrap .video_col:nth-child(1) .col_cover:hover, .cols_wrap .video_col:nth-child(3) .col_cover:hover{
+    opacity: 0;
+}

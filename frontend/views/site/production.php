@@ -6,7 +6,7 @@ use yii\helpers\Html;
 
 $this->title = 'Magnet Production';
 ?>
-<div class="site-about mtop text-center roboto text-uppercase font18 lh30 white">
+<div class="site-about mtop text-center roboto font18 lh30 white">
 
     Food Processor Marta MT-1549 {мощность 700Вт, 4 аксессуара: измельчитель с чашей 500 мл, насадка для измельчения/смешивания, венчик для взбивания, мерный стакан, 8 скоростных режимов, турборежим, подсветка кнопок, цвет белый)Food Processor Marta MT-1549 {мощность 700Вт, 4 аксессуара: измельчитель с чашей 500 мл, насадка для измельчения/смешивания, венчик для взбивания, мерный стакан, 8 скоростных режимов, турборежим, подсветка кнопок, цвет белый)
 
