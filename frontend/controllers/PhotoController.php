@@ -3,17 +3,17 @@
 namespace frontend\controllers;
 
 use Yii;
-use frontend\models\Design;
-use frontend\models\DesignSearch;
+use frontend\models\Photo;
+use frontend\models\PhotoSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 use yii\data\ActiveDataProvider;
 
 /**
- * DesignController implements the CRUD actions for Design model.
+ * PhotoController implements the CRUD actions for Photo model.
  */
-class DesignController extends Controller
+class PhotoController extends Controller
 {
     /**
      * @inheritdoc
@@ -29,6 +29,7 @@ class DesignController extends Controller
             ],
         ];
     }
+
 
     public function actionImgDelete($id)
     {
@@ -47,15 +48,10 @@ class DesignController extends Controller
         Yii::$app->response->format=\yii\web\Response::FORMAT_JSON;
         return true;
     }
-
-    /**
-     * Lists all Design models.
-     * @return mixed
-     */
     public function actionIndex()
     {
         $dataProvider = new ActiveDataProvider([
-            'query' => Design::find()->orderBy('id DESC'),
+            'query' => Photo::find()->orderBy('id DESC'),
             'pagination' => array('pageSize' => 30),
         ]);
 
@@ -64,20 +60,23 @@ class DesignController extends Controller
         ]);
     }
 
-
+    /**
+     * Lists all Photo models.
+     * @return mixed
+     */
     public function actionAdmin()
     {
-        $searchModel = new DesignSearch();
+        $searchModel = new PhotoSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
-        return $this->render('admin', [
+        return $this->render('index', [
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
         ]);
     }
 
     /**
-     * Displays a single Design model.
+     * Displays a single Photo model.
      * @param integer $id
      * @return mixed
      */
@@ -89,13 +88,13 @@ class DesignController extends Controller
     }
 
     /**
-     * Creates a new Design model.
+     * Creates a new Photo model.
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
     public function actionCreate()
     {
-        $model = new Design();
+        $model = new Photo();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
@@ -107,7 +106,7 @@ class DesignController extends Controller
     }
 
     /**
-     * Updates an existing Design model.
+     * Updates an existing Photo model.
      * If update is successful, the browser will be redirected to the 'view' page.
      * @param integer $id
      * @return mixed
@@ -126,7 +125,7 @@ class DesignController extends Controller
     }
 
     /**
-     * Deletes an existing Design model.
+     * Deletes an existing Photo model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
      * @param integer $id
      * @return mixed
@@ -134,7 +133,7 @@ class DesignController extends Controller
     public function actionDelete($id)
     {
         $webroot=Yii::getAlias('@webroot');
-        if(is_dir($dir=$webroot.'/images/design/'.$id)){
+        if(is_dir($dir=$webroot.'/images/photo/'.$id)){
             $scaned_images = scandir($dir, 1);
             foreach($scaned_images as $file )
             {
@@ -150,15 +149,15 @@ class DesignController extends Controller
     }
 
     /**
-     * Finds the Design model based on its primary key value.
+     * Finds the Photo model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
      * @param integer $id
-     * @return Design the loaded model
+     * @return Photo the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
     protected function findModel($id)
     {
-        if (($model = Design::findOne($id)) !== null) {
+        if (($model = Photo::findOne($id)) !== null) {
             return $model;
         } else {
             throw new NotFoundHttpException('The requested page does not exist.');

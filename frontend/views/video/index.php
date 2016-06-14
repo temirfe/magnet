@@ -1,35 +1,62 @@
 <?php
 
 use yii\helpers\Html;
-use yii\grid\GridView;
+use yii\widgets\ListView;
 
 /* @var $this yii\web\View */
-/* @var $searchModel frontend\models\VideoSearch */
-/* @var $dataProvider yii\data\ActiveDataProvider */
+/* @var $videos frontend\controllers\VideoController */
 
-$this->title = 'Videos';
+$this->title = 'Magnet | Видео';
 ?>
-<div class="video-index mtop">
+<style>
+    .inner_container{ margin-left: 220px; padding-right: 220px; width: 100%; margin-top: -170px;}
+    .pagination {
+        clear: both;
+        display: block;
+        padding-top: 20px;
+    }
 
-    <h1><?= Html::encode($this->title) ?></h1>
-    <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
+    @media (max-width: 1325px) {
+        .video_list {
+            height: 216px !important;
+            padding: 10px 5px;
+            width: 450px !important;
+        }
+        .video-index img {
+            height: auto !important;
+            left: 0 !important;
+            margin-top: 0;
+            max-width: 100% !important;
+            position: relative !important;
+        }
+    }
 
-    <p>
-        <?= Html::a('Create Video', ['create'], ['class' => 'btn btn-success']) ?>
-    </p>
-    <?= GridView::widget([
+    @media (max-width: 768px) {
+        .inner_container{padding:0; margin:0;}
+        .video_list {
+            height: auto !important;
+            width: auto !important;
+            padding: 5px 10px;
+        }
+        .video-index img {
+            height: auto !important;
+            left: 0 !important;
+            margin-top: 0;
+            max-width: 100% !important;
+            position: relative !important;
+        }
+    }
+</style>
+<?php
+    echo ListView::widget([
         'dataProvider' => $dataProvider,
-        'filterModel' => $searchModel,
-        'columns' => [
-            ['class' => 'yii\grid\SerialColumn'],
-
-            'id',
-            'main_img',
-            'embed',
-            'title',
-            'description',
-
-            ['class' => 'yii\grid\ActionColumn'],
+        'itemView' => '_list',
+        'summary'=>'',
+        'options' => [
+            'class' => 'video-index mtop',
+        ],'itemOptions' => [
+            'class' => 'video_list',
         ],
-    ]); ?>
-</div>
+
+    ]);
+?>

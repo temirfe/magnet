@@ -5,11 +5,10 @@ use yii\grid\GridView;
 use yii\widgets\ListView;
 
 /* @var $this yii\web\View */
-/* @var $searchModel frontend\models\DesignSearch */
-/* @var $models frontend\controllers\DesignController */
+/* @var $searchModel frontend\models\PhotoSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Magnet Production | Дизайн';
+$this->title = 'Magnet Production | Фото';
 ?>
 <?php
 echo ListView::widget([
@@ -19,7 +18,7 @@ echo ListView::widget([
     'options' => [
         'class' => 'design-index mtop',
     ],'itemOptions' => [
-        'class' => 'col-sm-6 pr0 pl0 col-md-4 col-xs-6',
+        'class' => 'photo-item mb20',
     ],
 
 ]);

@@ -38,11 +38,46 @@ if($next && $next['id']!=$prev['id']) {
         $link3=Html::a('<div class="col_cover"></div>'.$img3,['/video/view','id'=>$next['id']],['title'=>$next['title']]);
 }
 
+if($model->main_img) $img2=Html::img('/images/video/'.$model->id.'/'.$model->main_img);
+else if($model->thumb_url) $img2=Html::img($model->thumb_url);
+else $img2='';
+
 ?>
 <style>
     .inner_container{ margin-left: 185px;
         padding-right: 185px;
         width: 100%;    margin-top: -170px;}
+
+    @media (max-width: 1090px) {
+        .cols_wrap .video_col:nth-child(1), .cols_wrap .video_col:nth-child(3) {display: none;}
+
+        .video_col { padding: 0 10px;  }
+    }
+    @media (max-width: 768px) {
+        .inner_container{padding:0; margin:0;}
+        .mtop2{margin:0;}
+        .video_col {
+            margin-right: 0;
+            width: 100%;
+        }
+        .cols_wrap {
+            width: 100%;
+        }
+        .col_emb {
+            position: relative;
+            padding-bottom: 56.25%; /* 16:9 */
+            padding-top: 25px;
+            height: 0;
+        }
+        .col_emb iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+        .video_col img {display: none;}
+    }
 </style>
 <div class="video-view mtop2">
     <div class="cols_wrap">
@@ -54,9 +89,11 @@ if($next && $next['id']!=$prev['id']) {
         <div class="video_col pull-left">
             <h1 class="mt0 text-right"><?= Html::encode($model->title) ?></h1>
             <div class="desc font18 text-right mb10"><?=$model->description;?></div>
-            <?php //=Html::img('/images/video/'.$model->id.'/'.$model->main_img) ?>
-            <?=$model->embed ?>
-            <div class="mt15"><?=nl2br($model->text) ?></div>
+            <div class="rel">
+                <?php echo $img2; ?>
+                <div class="col_emb"><?=$model->embed ?></div>
+            </div>
+            <div class="mt15 text-justify"><?=nl2br($model->text) ?></div>
         </div>
         <div class="video_col pull-left">
             <h1 class="mt0 vh">..</h1>

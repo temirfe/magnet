@@ -8,6 +8,7 @@ use frontend\models\VideoSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use yii\data\ActiveDataProvider;
 
 /**
  * VideoController implements the CRUD actions for Video model.
@@ -49,10 +50,22 @@ class VideoController extends Controller
      */
     public function actionIndex()
     {
+        $dataProvider = new ActiveDataProvider([
+            'query' => Video::find()->orderBy('id DESC'),
+            'pagination' => array('pageSize' => 18),
+        ]);
+
+        return $this->render('index', [
+            'dataProvider'=>$dataProvider
+        ]);
+    }
+
+    public function actionAdmin()
+    {
         $searchModel = new VideoSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
-        return $this->render('index', [
+        return $this->render('admin', [
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
         ]);
