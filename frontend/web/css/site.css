@@ -114,7 +114,7 @@ a.desc:after {
 .nav > li > form > button:hover {
     text-decoration: none;
 }
-
+.clear{clear:both;}
 
 .site-index{text-align:center;}
 .navbar-header { float: none; margin-bottom: 40px; padding-top: 15px;}
@@ -313,3 +313,5 @@ a.desc:after {
     height: 150px;
     margin-top: 0;
 }
+.photo_car{float:left;}
+.photo_car img{height: 300px;}

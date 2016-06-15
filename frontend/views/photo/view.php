@@ -1,37 +1,36 @@
 <?php
 
 use yii\helpers\Html;
-use yii\widgets\DetailView;
+use frontend\assets\PhotoSwipeAsset;
+use frontend\assets\SwiperAsset;
+
+PhotoSwipeAsset::register($this);
+SwiperAsset::register($this);
 
 /* @var $this yii\web\View */
 /* @var $model frontend\models\Photo */
 
 $this->title = 'Magnet | '.$model->title;
 ?>
+<style>
+    .inner_container{ margin-left: 185px;
+        padding-right: 185px;
+        width: 100%;    margin-top: -170px;}
+</style>
 <div class="photo-view mtop2">
 
-    <h1><?= Html::encode($this->title) ?></h1>
-
-    <p>
-        <?= Html::a('Update', ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
-        <?= Html::a('Delete', ['delete', 'id' => $model->id], [
-            'class' => 'btn btn-danger',
-            'data' => [
-                'confirm' => 'Are you sure you want to delete this item?',
-                'method' => 'post',
-            ],
-        ]) ?>
-    </p>
-
-    <?= DetailView::widget([
-        'model' => $model,
-        'attributes' => [
-            'id',
-            'main_img',
-            'text:ntext',
-            'title',
-            'description',
-        ],
-    ]) ?>
+    <h1><?= Html::encode($model->title) ?></h1>
+<?php
+    $dir=Yii::getAlias('@webroot')."/images/photo/".$model->id;
+    $photos=scandir($dir);
+    foreach($photos as $photo){
+        if(is_file($dir.'/'.$photo) && strpos($photo,'s_')===false){
+            $img=Html::img("@web/images/photo/".$model->id."/".$photo,['class'=>'iblock']);
+            echo "<div class='photo_car'>".Html::a($img,['/photo/view','id'=>$model->id],['class'=>'img-responsive'])."</div>";
+        }
+    }
+    //echo Html::a("<div class='font28'>".$model->title."</div>",['/photo/view','id'=>$model->id],['class'=>'mt10 iblock white']);
+    echo "<div class='clear'></div><p>".$model->text."</p>";
+?>
 
 </div>
