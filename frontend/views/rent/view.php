@@ -10,9 +10,9 @@ SwiperAsset::register($this);
 /* @var $this yii\web\View */
 /* @var $model frontend\models\Photo */
 
-$this->title = 'Magnet | '.$model->title;
+$this->title = 'Magnet | Аренда студии';
 
-$dir=Yii::getAlias('@webroot')."/images/photo/".$model->id;
+$dir=Yii::getAlias('@webroot')."/images/rent/".$model->id;
 $photos=scandir($dir);
 ?>
 <style>
@@ -38,7 +38,7 @@ $photos=scandir($dir);
     }
 </style>
 <div class="photo-view mtop2">
-    <div class="text-right st67"><h1><?= Html::encode($model->title) ?></h1></div>
+    <div class="text-right st67"><h1>Аренда студии</h1></div>
 
     <div class="swiper-container gallery-thumbs">
         <div class="swiper-wrapper">
@@ -46,7 +46,7 @@ $photos=scandir($dir);
             $i=0;
             foreach($photos as $photo){
                 if(is_file($dir.'/'.$photo) && strpos($photo,'s_')===false){
-                    $img_url='/images/photo/'.$model->id.'/'.$photo;
+                    $img_url='/images/rent/'.$model->id.'/'.$photo;
                     echo "<div class='swiper-slide js_img' style='background-image:url({$img_url})' src='{$img_url}'><a class='js_photo_swipe open_swipe' data-index='{$i}'></a></div>";
                     $i++;
                 }

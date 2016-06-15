@@ -164,14 +164,20 @@ a.desc:after {
 .pl0{padding-left:0;}
 .pr0{padding-right:0;}
 .roboto{font-family: "Roboto Condensed",sans-serif;}
+.sans{font-family: "Open Sans Condensed",sans-serif;}
 .font18{font-size:18px;}
+.font20{font-size:20px;}
 .font28{font-size:28px;}
 .lh30{line-height:30px;}
-.white, a.white:hover{color:white;}
+.white, a.white, .white a, a.white:hover{color:white;}
+.underline a{text-decoration: underline;}
+.underline a:hover{text-decoration: none;}
 .rel{position: relative;}
 .abs{position: absolute;}
 .brand_blue{color:#22303C;}
 .iblock{display: inline-block;}
+.mcenter{margin-right:auto; margin-left:auto;}
+.mw735{max-width:735px;}
 .blue_bg{background-color: #22303c;
     height: 100%;
     left: 185px;
@@ -315,3 +321,34 @@ a.desc:after {
 }
 .photo_car{float:left;}
 .photo_car img{height: 300px;}
+.swiper-container {
+    width: 100%;
+    height: 350px;
+    margin-left: auto;
+    margin-right: auto;
+}
+.swiper-slide {
+    background-size: cover;
+    background-position: center;
+}
+.gallery-thumbs .swiper-slide {
+    height: 100%;
+    opacity: 0.4;
+    width: 35%;
+}
+.gallery-thumbs .swiper-slide-active {
+    opacity: 1;
+}
+.st67{width:67%;}
+.st68{margin: 20px 0 0 40px; width: 64%;}
+.open_swipe{ background-color: rgba(255, 255, 255, 0.5);
+    background-image: url("/images/enlarge.png");
+    background-repeat: no-repeat;
+    cursor: pointer;
+    display: none;
+    height: 32px;
+    position: absolute;
+    right: 5px;
+    top: 5px;
+    width: 32px;}
+.swiper-slide:hover .open_swipe{display:block;}

@@ -55,7 +55,7 @@ AppAsset::register($this);
             ['label' => 'Видео', 'url' => ['/video'], 'active'=>$controller=='video' ? true : false],
             ['label' => 'Фото', 'url' => ['/photo'], 'active'=>$controller=='photo' ? true : false],
             ['label' => 'Web/App', 'url' => ['/web'], 'active'=>$controller=='web' ? true : false],
-            ['label' => 'Аренда студии', 'url' => ['/site/rent']],
+            ['label' => 'Аренда студии', 'url' => ['/rent/view','id'=>1]],
             ['label' => 'Контакты', 'url' => ['/site/contact']],
         ];
         echo Nav::widget([
@@ -76,7 +76,7 @@ AppAsset::register($this);
 </div>
 
 <?php
-if($controller=='design' && $action=='view')
+if(in_array($controller,['design','photo','web','rent']) && $action=='view')
     include_once(Yii::getAlias('@frontend').'/views/layouts/_swipe.php');
 ?>
 <?php $this->endBody() ?>
