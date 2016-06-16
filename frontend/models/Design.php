@@ -79,7 +79,7 @@ class Design extends \yii\db\ActiveRecord
         }
         $tosave=Yii::getAlias('@webroot').'/images/design/'.$this->id;
         if (!file_exists($tosave)) {
-            @mkdir($tosave);
+            mkdir($tosave);
         }
 
         if($this->imageFile){
