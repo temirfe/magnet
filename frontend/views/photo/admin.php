@@ -7,26 +7,21 @@ use yii\grid\GridView;
 /* @var $searchModel frontend\models\PhotoSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Photos';
-$this->params['breadcrumbs'][] = $this->title;
+$this->title = 'Фото';
 ?>
-<div class="photo-index">
+<div class="photo-index mtop">
 
     <h1><?= Html::encode($this->title) ?></h1>
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
-
-    <p>
-        <?= Html::a('Create Photo', ['create'], ['class' => 'btn btn-success']) ?>
-    </p>
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
         'columns' => [
-            ['class' => 'yii\grid\SerialColumn'],
-
-            'id',
-            'main_img',
-            'text:ntext',
+            [
+                'attribute'=>'id',
+                'headerOptions' => ['width' => '50']
+                //'value'=>function($model){return $model->category->title;},
+            ],
             'title',
             'description',
 

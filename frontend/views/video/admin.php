@@ -9,7 +9,7 @@ use yii\grid\GridView;
 
 $this->title = 'Videos';
 ?>
-<div class="video-index mtop2">
+<div class="video-admin mtop2">
 
     <h1><?= Html::encode($this->title) ?></h1>
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>

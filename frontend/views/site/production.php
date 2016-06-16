@@ -5,7 +5,6 @@
 use yii\helpers\Html;
 
 $this->title = 'Magnet Production';
-
 $dao=Yii::$app->db;
 $text= $dao->createCommand("SELECT text FROM page WHERE title='about'")->queryScalar();
 ?>

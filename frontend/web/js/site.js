@@ -59,3 +59,24 @@ if($('.gallery-thumbs').length){
         slideToClickedSlide: true
     });
 }
+$('#contact-form').find('input, textarea').keyup(function(){
+    var len=$(this).val().length;
+    if(len>0){
+        $(this).siblings('label').fadeIn();}
+    else {
+        $(this).siblings('label').hide();
+    }
+    $('.js_form_hidden').show();
+});
+
+$('.js_admin_close').click(function(){
+    var cont=$('.js_admpanel-content');
+    if(cont.is(':visible')){
+        cont.slideUp();
+        $(this).addClass('glyphicon-menu-down').removeClass('glyphicon-menu-up');
+    }
+    else{
+        cont.slideDown();
+        $(this).addClass('glyphicon-menu-up').removeClass('glyphicon-menu-down');
+    }
+});

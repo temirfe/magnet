@@ -9,6 +9,7 @@ use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 use yii\data\ActiveDataProvider;
+use yii\filters\AccessControl;
 
 /**
  * DesignController implements the CRUD actions for Design model.
@@ -25,6 +26,22 @@ class DesignController extends Controller
                 'class' => VerbFilter::className(),
                 'actions' => [
                     'delete' => ['POST'],
+                ],
+            ],
+            'access' => [
+                'class' => AccessControl::className(),
+                'only' => ['delete','create','update','admin','imgDelete'],
+                'rules' => [
+                    [
+                        'actions' => ['delete','create','update','admin','imgDelete'],
+                        'allow' => true,
+                        'roles' => ['@'],
+                        'matchCallback' => function ($rule, $action) {
+                            if(Yii::$app->user->identity->role=='admin') $return=true;
+                            else $return=false;
+                            return $return;
+                        }
+                    ],
                 ],
             ],
         ];

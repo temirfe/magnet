@@ -17,6 +17,12 @@ class Rent extends \yii\db\ActiveRecord
 {
     public $imageFile;
     public $imageFiles=array();
+
+
+    public static function tableName()
+    {
+        return 'rent';
+    }
     /**
      * @inheritdoc
      */

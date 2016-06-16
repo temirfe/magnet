@@ -26,6 +26,9 @@ class User extends ActiveRecord implements IdentityInterface
     const STATUS_DELETED = 0;
     const STATUS_ACTIVE = 10;
 
+    const ROLE_USER = 'user';
+    const ROLE_ADMIN = 'admin';
+
 
     /**
      * @inheritdoc
@@ -45,6 +48,14 @@ class User extends ActiveRecord implements IdentityInterface
         ];
     }
 
+    public static function isAdmin()
+    {
+        if (static::findOne(['id' => Yii::$app->user->id, 'role' => self::ROLE_ADMIN])){
+            return true;
+        } else {
+            return false;
+        }
+    }
     /**
      * @inheritdoc
      */
@@ -53,6 +64,7 @@ class User extends ActiveRecord implements IdentityInterface
         return [
             ['status', 'default', 'value' => self::STATUS_ACTIVE],
             ['status', 'in', 'range' => [self::STATUS_ACTIVE, self::STATUS_DELETED]],
+            ['role', 'default', 'value' => self::ROLE_ADMIN],
         ];
     }
 

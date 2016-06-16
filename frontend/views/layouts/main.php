@@ -43,7 +43,8 @@ AppAsset::register($this);
 </head>
 <body>
 <?php $this->beginBody() ?>
-
+<?php
+if(!Yii::$app->user->isGuest && Yii::$app->user->identity->role=='admin'){include_once('_adminpanel.php');} ?>
 <div class="wrap">
     <div class='red_bg'></div>
     <div class="menu_container">

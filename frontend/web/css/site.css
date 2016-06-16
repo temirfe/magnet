@@ -154,15 +154,24 @@ a.desc:after {
 .mt10{margin-top: 10px;}
 .mt20{margin-top: 20px;}
 .mt15{margin-top: 15px;}
+.mt32{margin-top: 32px;}
 .mt0{margin-top: 0;}
 .mb0{margin-bottom: 0;}
 .mr0{margin-right: 0;}
 .ml0{margin-left: 0;}
+.ml5{margin-left: 5px;}
+.ml10{margin-left: 10px;}
+.ml15{margin-left: 15px;}
+.ml20{margin-left: 20px;}
+.ml25{margin-left: 25px;}
+.mb5{margin-bottom: 5px;}
 .mb10{margin-bottom: 10px;}
 .mb20{margin-bottom: 20px;}
+.mb25{margin-bottom: 25px;}
 .mb60{margin-bottom: 60px;}
 .pl0{padding-left:0;}
 .pr0{padding-right:0;}
+.pr50{padding-right:50px;}
 .roboto{font-family: "Roboto Condensed",sans-serif;}
 .sans{font-family: "Open Sans Condensed",sans-serif;}
 .font18{font-size:18px;}
@@ -252,6 +261,7 @@ a.desc:after {
 .video_col img{height: 360px; width: 640px;}
 
 .vh{visibility: hidden;}
+.hidn{display: none;}
 
 .menu_container{float:left; position: relative; z-index: 2}
 .inner_container{    float: left;
@@ -352,8 +362,79 @@ a.desc:after {
     top: 5px;
     width: 32px;}
 .swiper-slide:hover .open_swipe{display:block;}
-.social{}
 .social img{width:40px;}
-.insta{}
-.fb{}
-.youtube{}
+.social img:hover{opacity:0.7;}
+.phones{margin-top:-6px;}
+#contact-form input, #contact-form textarea{
+    background-color: transparent;
+    border-image: none;
+    border-radius: 0;
+    border:none;
+    border-bottom:1px solid #fff;
+    box-shadow: none;
+    color: #fff;
+    height: 25px;
+    padding: 0;
+    text-transform: uppercase;
+}
+#contact-form label{
+    font-size: 11px;
+    font-weight: normal;
+    margin-bottom: 0;
+    position: absolute;
+    text-transform: none;
+    top:-10px;
+    display: none;
+}
+#contact-form label[for='contactform-verifycode']{display: block; top:-15px;}
+#contact-form label[for='contactform-body']{top:-15px;}
+#contact-form .form-group{margin-bottom:20px; position:relative;}
+#contact-form .field-contactform-body{margin-bottom: 40px;}
+
+.admpanel_top{    text-transform: none;position: absolute; right:0;
+    z-index: 100;}
+.admpanel-content {
+    background: #3b3b3b none repeat scroll 0 0;
+    font-size: 0.9em;
+    overflow: hidden;
+    padding: 5px 0 7px;
+}
+
+.top_admpanel_wrapper {margin-left: 17px;
+}
+
+.operations {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+.operations div {
+    float: left;
+    margin-right: 40px;
+    color: #f9f9f9;
+}
+.operations a {
+    color: white;
+    display: inline-block;
+    padding: 2px 0;
+    text-decoration: none;
+}
+.operations a:hover {color: #ad8d38;}
+.operations_title{    border-bottom: 1px solid white; margin-top: 5px;}
+.panel-icon {
+    color:#ad8d38;
+    font-size: 12px;
+    padding-right: 7px;
+}
+.panel-icon2 {
+    font-size: 12px;
+    padding-right: 5px;
+}
+.admin_toggle{
+    border: 1px solid #999;
+    cursor: pointer;
+    padding: 0 4px;
+    position: absolute;
+    right: 3px;
+    top: 5px;
+}

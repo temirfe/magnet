@@ -9,22 +9,30 @@ use yii\grid\GridView;
 
 $this->title = 'Дизайн';
 ?>
-<div class="design-index mtop">
+<div class="design-admin mtop">
 
     <h1><?= Html::encode($this->title) ?></h1>
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
-    <p>
-        <?= Html::a('Добавить проект', ['create'], ['class' => 'btn btn-success']) ?>
-    </p>
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
         'columns' => [
-            ['class' => 'yii\grid\SerialColumn'],
-
-            'id',
-            'main_img',
+            [
+                'attribute'=>'id',
+                'headerOptions' => ['width' => '50']
+                //'value'=>function($model){return $model->category->title;},
+            ],
+            [
+                'attribute' => 'main_img',
+                'format' => 'raw',
+                'value' => function($model) {
+                    if($model->main_img) $img="@web/images/design/".$model->id."/s_".$model->main_img;
+                    else $img='';
+                    return Html::img($img,['style'=>'width:80px;']);
+                },
+                'headerOptions' => ['width' => '100']
+            ],
             'title',
             'description',
 

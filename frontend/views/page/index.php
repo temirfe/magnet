@@ -2,31 +2,31 @@
 
 use yii\helpers\Html;
 use yii\grid\GridView;
+use yii\helpers\StringHelper;
 
 /* @var $this yii\web\View */
 /* @var $searchModel frontend\models\PageSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Pages';
-$this->params['breadcrumbs'][] = $this->title;
+$this->title = 'Тектсты';
 ?>
-<div class="page-index">
+<div class="page-index mtop">
 
     <h1><?= Html::encode($this->title) ?></h1>
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
-
-    <p>
-        <?= Html::a('Create Page', ['create'], ['class' => 'btn btn-success']) ?>
-    </p>
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
         'columns' => [
-            ['class' => 'yii\grid\SerialColumn'],
-
-            'id',
+            [
+                'attribute'=>'id',
+                'headerOptions' => ['width' => '70']
+            ],
             'title',
-            'text:ntext',
+            [
+                'attribute'=>'text',
+                'value'=>function($model){return StringHelper::truncate($model->text, 70);}
+            ],
 
             ['class' => 'yii\grid\ActionColumn'],
         ],

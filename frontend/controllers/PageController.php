@@ -8,6 +8,7 @@ use frontend\models\PageSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use yii\filters\AccessControl;
 
 /**
  * PageController implements the CRUD actions for Page model.
@@ -24,6 +25,22 @@ class PageController extends Controller
                 'class' => VerbFilter::className(),
                 'actions' => [
                     'delete' => ['POST'],
+                ],
+            ],
+            'access' => [
+                'class' => AccessControl::className(),
+                'only' => ['delete','create','update','index'],
+                'rules' => [
+                    [
+                        'actions' => ['delete','create','update','index'],
+                        'allow' => true,
+                        'roles' => ['@'],
+                        'matchCallback' => function ($rule, $action) {
+                            if(Yii::$app->user->identity->role=='admin') $return=true;
+                            else $return=false;
+                            return $return;
+                        }
+                    ],
                 ],
             ],
         ];

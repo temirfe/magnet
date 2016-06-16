@@ -20,6 +20,13 @@ class Photo extends \yii\db\ActiveRecord
 {
     public $imageFile;
     public $imageFiles=array();
+
+
+    public static function tableName()
+    {
+        return 'photo';
+    }
+
     /**
      * @inheritdoc
      */
