@@ -56,9 +56,9 @@ class ContactForm extends Model
     {
         return Yii::$app->mailer->compose()
             ->setTo($email)
-            ->setFrom([$this->email => $this->name])
-            ->setSubject($this->subject)
-            ->setTextBody($this->body)
+            ->setFrom([Yii::$app->params['adminEmail'] => 'Magnet mailer'])
+            ->setSubject('Посетител оставил сообщение на сайте magnet.kg')
+            ->setTextBody('Имя: '.$this->name.'. \n Телефон: '.$this->subject.'\n E-mail: '.$this->email.'\n Сообщение: '.$this->body)
             ->send();
     }
 }
