@@ -116,7 +116,7 @@ a.desc:after {
 }
 .clear{clear:both;}
 
-.site-index{text-align:center;}
+.site-index{position: relative;text-align: center; z-index: 200;}
 .navbar-header { float: none; margin-bottom: 40px; padding-top: 15px;}
 .navbar{ border: medium none;
     height: 100%;
@@ -188,7 +188,7 @@ a.desc:after {
 }
 .red_bg{background-color: #a94442;
     height: 100%;
-    opacity: 0.8;
+    opacity: 0.9;
     position: fixed;
     width: 185px;
     z-index: 1;}
@@ -352,3 +352,8 @@ a.desc:after {
     top: 5px;
     width: 32px;}
 .swiper-slide:hover .open_swipe{display:block;}
+.social{}
+.social img{width:40px;}
+.insta{}
+.fb{}
+.youtube{}

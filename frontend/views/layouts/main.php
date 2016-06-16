@@ -10,6 +10,9 @@ use yii\widgets\Breadcrumbs;
 use frontend\assets\AppAsset;
 use common\widgets\Alert;
 
+$controller=Yii::$app->controller->id;
+$action=Yii::$app->controller->action->id;
+
 AppAsset::register($this);
 ?>
 <?php $this->beginPage() ?>
@@ -24,10 +27,17 @@ AppAsset::register($this);
     <link href='https://fonts.googleapis.com/css?family=Roboto+Condensed:400,300&subset=latin,cyrillic' rel='stylesheet' type='text/css'>
     <?php
     $bg='about.jpg';
+    if($controller=='design'){$bg='design.jpg';}
+    else if($controller=='video'){$bg='video.jpg';}
+    else if($controller=='photo'){$bg='photo.jpg';}
+    else if($controller=='web'){$bg='web.jpg';}
+    else if($controller=='rent'){$bg='studio.jpg';}
+    else if($controller=='site' && $action=='contact'){$bg='contact.jpg';}
     ?>
     <style>
         body{
             background: url('/css/images/<?=$bg?>') no-repeat center center fixed;
+            background-size: cover;
         }
     </style>
 </head>
@@ -46,8 +56,6 @@ AppAsset::register($this);
             ],
             'renderInnerContainer'=>false
         ]);
-        $controller=Yii::$app->controller->id;
-        $action=Yii::$app->controller->action->id;
 
         $menuItems = [
             ['label' => 'О нас', 'url' => ['/site/production']],

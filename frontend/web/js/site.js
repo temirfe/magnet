@@ -50,11 +50,12 @@ $('.js_des_list_img').hover(function(){
         $(this).find('.js_title_hidden').css({ "bottom": "-20px", "opacity": "0" });
     }
 );
-
-var galleryThumbs = new Swiper('.gallery-thumbs', {
-    spaceBetween: 10,
-    centeredSlides: true,
-    slidesPerView: 'auto',
-    touchRatio: 0.2,
-    slideToClickedSlide: true
-});
+if($('.gallery-thumbs').length){
+    var galleryThumbs = new Swiper('.gallery-thumbs', {
+        spaceBetween: 10,
+        centeredSlides: true,
+        slidesPerView: 'auto',
+        touchRatio: 0.2,
+        slideToClickedSlide: true
+    });
+}

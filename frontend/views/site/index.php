@@ -123,7 +123,7 @@ $this->title = 'Magnet Production';
     <div class="circle">
         <div class="dot dot1 js_dot1"></div>
         <div class="word dev js_dev"><a href="#">DEVELOPMENT</a></div>
-        <div class="word prod js_prod"><a href="#">PRODUCTION</a></div>
+        <div class="word prod js_prod"><a href="/production">PRODUCTION</a></div>
         <div class="dot dot2 js_dot2"></div>
         <img src="/images/mlogo.png" class="mlogo" />
     </div>
